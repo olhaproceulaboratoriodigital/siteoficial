@@ -1,0 +1,337 @@
+/* ==========================================================================
+   OLHA PRO CÉU - UNIVASF
+   Paleta de Cores baseada na logo oficial (Amarelo & Preto)
+   ========================================================================== */
+
+:root {
+  --bg-dark: #050505;
+  --card-bg: #111111;
+  --header-bg: rgba(5, 5, 5, 0.95);
+  --accent-gold: #ffcc00;
+  --accent-gold-hover: #e6b800;
+  --text-main: #f0f0f0;
+  --text-muted: #a0a0a0;
+  --border-subtle: rgba(255, 204, 0, 0.2);
+  --max-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header & Navegação */
+header {
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.logo span {
+  color: var(--accent-gold);
+}
+
+nav a {
+  color: var(--text-main);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--accent-gold);
+}
+
+/* Banner Principal */
+.hero {
+  background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 1)), 
+              url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.logo-img {
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.3));
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.hero .slogan {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--text-main);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.hero p.desc {
+  font-size: 1rem;
+  max-width: 650px;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* Botões */
+.btn-primary {
+  display: inline-block;
+  background: transparent;
+  color: var(--accent-gold);
+  border: 2px solid var(--accent-gold);
+  padding: 0.7rem 1.8rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--accent-gold);
+  color: #000;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+}
+
+/* Estrutura de Conteúdo */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  width: 100%;
+  flex: 1;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--accent-gold);
+  padding-left: 1rem;
+  color: #fff;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Cartões */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 204, 0, 0.15);
+  border-color: var(--accent-gold);
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-gold);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.card-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.content-box {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 2rem;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 2rem;
+}
+
+/* Rodapé */
+footer {
+  background-color: #000;
+  border-top: 1px solid var(--border-subtle);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: auto;
+}
+/* ==========================================================================
+   Efeitos Visuais e UX do Espaço
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #0d122b 0%, #050505 80%);
+}
+
+/* Efeito de fundo das estrelas e do Planeta Terra em rotação/movimento */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=800&auto=format&fit=crop') center/cover no-repeat;
+  border-radius: 50%;
+  box-shadow: inset -30px -30px 50px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 210, 255, 0.2);
+  opacity: 0.65;
+  animation: orbitEarth 60s infinite linear;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Camada para garantir que o texto do Hero fique legível sobre a animação */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes orbitEarth {
+  0% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(180deg) translateY(20px);
+  }
+  100% {
+    transform: rotate(360deg) translateY(0px);
+  }
+}
+
+/* Responsividade do Planeta em telas menores */
+@media (max-width: 768px) {
+  .hero::before {
+    width: 280px;
+    height: 280px;
+    top: -5%;
+    right: -20%;
+    opacity: 0.4;
+  }
+}
+
+/* Estilos do Jogo */
+.game-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.game-card {
+  font-size: 4rem;
+  margin: 1.5rem 0;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-game {
+  background: #181b2a;
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  padding: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.btn-game:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.score-board {
+  font-size: 1.2rem;
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+  font-weight: bold;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio Espacial | Olha Pro Céu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">OLHA PRO CÉU <span>UNIVASF</span></a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre o Projeto</a>
+      <a href="jogo.html" class="active">Jogo Astronômico</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2 class="section-title" style="text-align: center;">Quiz Espacial dos Integrantes</h2>
+    
+    <div class="game-container">
+      <div class="score-board">Pontuação: <span id="score">0</span></div>
+      
+      <div id="quiz-box">
+        <p id="member-tag" style="color: var(--accent-gold); font-weight: bold;"></p>
+        <div class="game-card" id="planet-icon">🌌</div>
+        <p id="question-text" style="font-size: 1.1rem; margin-bottom: 1rem;"></p>
+        
+        <div class="options-grid" id="options-container">
+          <!-- Opções geradas via JS -->
+        </div>
+      </div>
+
+      <div id="result-box" style="display: none;">
+        <h3>Missão Cumprida! 🚀</h3>
+        <p id="final-msg" style="margin: 1rem 0;"></p>
+        <button onclick="restartGame()" class="btn-primary">Jogar Novamente</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 OLHA PRO CÉU — Projeto de Astronomia UNIVASF</p>
+  </footer>
+
+  <script>
+    // Substitua os nomes dos integrantes e perguntas conforme a equipe real!
+    const questions = [
+      {
+        member: "Pergunta do Integrante Lucas:",
+        icon: "🪐",
+        question: "Qual é o maior planeta do nosso Sistema Solar?",
+        options: ["Marte", "Júpiter", "Saturno", "Netuno"],
+        answer: 1
+      },
+      {
+        member: "Pergunta da Integrante Sofia:",
+        icon: "☀️",
+        question: "Qual é a estrela mais próxima do planeta Terra?",
+        options: ["Siriús", "Alfa Centauri", "Sol", "Betelgeuse"],
+        answer: 2
+      },
+      {
+        member: "Pergunta da Professora:",
+        icon: "🌕",
+        question: "A Lua possui luz própria?",
+        options: ["Sim", "Não, reflete o Sol", "Apenas na lua cheia", "Sim, no eclipse"],
+        answer: 1
+      }
+    ];
+
+    let currentQ = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const q = questions[currentQ];
+      document.getElementById("member-tag").innerText = q.member;
+      document.getElementById("planet-icon").innerText = q.icon;
+      document.getElementById("question-text").innerText = q.question;
+      
+      const optionsContainer = document.getElementById("options-container");
+      optionsContainer.innerHTML = "";
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "btn-game";
+        btn.innerText = opt;
+        btn.onclick = () => checkAnswer(idx);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      if(selected === questions[currentQ].answer) {
+        score += 10;
+        document.getElementById("score").innerText = score;
+      }
+      
+      currentQ++;
+      if(currentQ < questions.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById("quiz-box").style.display = "none";
+      document.getElementById("result-box").style.display = "block";
+      document.getElementById("final-msg").innerText = `Você fez ${score} pontos aprendendo com a equipe do Olha Pro Céu!`;
+    }
+
+    function restartGame() {
+      currentQ = 0;
+      score = 0;
+      document.getElementById("score").innerText = score;
+      document.getElementById("quiz-box").style.display = "block";
+      document.getElementById("result-box").style.display = "none";
+      loadQuestion();
+    }
+
+    // Inicializa o jogo
+    loadQuestion();
+  </script>
+</body>
+</html>
