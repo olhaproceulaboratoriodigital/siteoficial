@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Publicações & Trabalhos | Olha Pro Céu UNIVASF</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- MathJax para fórmulas matemáticas -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- NAVBAR ESPACIAL (PADRONIZADA) -->
+  <header class="space-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="space-brand">
+        <div class="orbit-icon">
+          <svg viewBox="0 0 50 50" width="32" height="32">
+            <ellipse cx="25" cy="25" rx="20" ry="8" fill="none" stroke="#3b82f6" stroke-width="2" transform="rotate(-30 25 25)"/>
+            <circle cx="25" cy="25" r="5" fill="#3b82f6"/>
+            <circle cx="38" cy="18" r="2.5" fill="#60a5fa"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">OLHA PRO CEU</span>
+          <span class="brand-sub">• UNIVASF</span>
+        </div>
+      </a>
+      <nav class="nav-menu">
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Exploração ▾</a>
+          <div class="dropdown">
+            <a href="sobre.html">O Projeto</a>
+            <a href="jogo.html">Minigame Espacial</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Ciência ▾</a>
+          <div class="dropdown">
+            <a href="publicacoes.html" class="active">Pesquisas & Artigos</a>
+            <a href="index.html#vitrines">Ações de Inovação</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Terra & Espaço ▾</a>
+          <div class="dropdown">
+            <a href="observatorio.html">Observatório</a>
+            <a href="noticias.html">Notícias Espaciais</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Educação ▾</a>
+          <div class="dropdown">
+            <a href="olimpiadas.html">Olimpíada UNIVASF</a>
+            <a href="laboratorio.html">Laboratório de Inovação</a>
+          </div>
+        </div>
+        <a href="sobre.html" class="nav-link">O Projeto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="apoio.html" class="btn-participe">Participe 🚀</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-space" style="height: 50vh; min-height: 380px;">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content-wrapper" style="padding-top: 3rem;">
+      <div class="location-tag"><span class="dot"></span>PESQUISA & PRODUÇÃO CIENTÍFICA</div>
+      <h1 class="hero-main-title">Publicações & Trabalhos Acadêmicos</h1>
+      <p class="hero-subtext">Artigos, relatórios de pesquisa e fundamentos de astrofísica desenvolvidos pela equipe da UNIVASF.</p>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 4rem 1.5rem;">
+    
+    <!-- SEÇÃO 1: TRABALHOS ACADÊMICOS -->
+    <section class="pub-section" style="margin-bottom: 4rem;">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <div>
+          <span class="sub-header-tag">DOCUMENTAÇÃO OFICIAL</span>
+          <h2 class="section-heading">Relatórios & Trabalhos Acadêmicos</h2>
+        </div>
+      </div>
+      <div id="academic-grid"></div>
+    </section>
+
+    <!-- SEÇÃO 2: CONHECIMENTO E CÁLCULOS -->
+    <section class="pub-section">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <div>
+          <span class="sub-header-tag">ASTROFÍSICA E TEORIA</span>
+          <h2 class="section-heading">Conhecimento, Cálculos & Artigos</h2>
+        </div>
+      </div>
+      <div id="knowledge-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="space-footer">
+    <div class="container">
+      <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <p>&copy; 2026 OLHA PRO CÉU — Projeto de Astronomia UNIVASF</p>
+        <div class="footer-legal-links" style="display: flex; gap: 1.5rem;">
+          <a href="privacidade.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">Política de Privacidade</a>
+          <a href="termos.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Carrega Trabalhos
+      loadSectionWithLunarState(
+        "academic-grid",
+        "Trabalhos",
+        (data, container) => {
+          container.innerHTML = `<div class="vitrines-grid"></div>`;
+          const grid = container.querySelector(".vitrines-grid");
+          data.forEach(item => {
+            grid.innerHTML += `
+              <article class="news-card">
+                <div class="news-body">
+                  <span class="news-tag">${item.categoria || 'Relatório Acadêmico'}</span>
+                  <h3 class="news-title" style="margin-top: 0.6rem;">${item.titulo}</h3>
+                  <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.8rem 0;">${item.resumo || ''}</p>
+                  <div style="font-size: 0.85rem; color: var(--accent-gold); margin-bottom: 1rem;">✍️ Autor: ${item.autor || 'Equipe UNIVASF'}</div>
+                  ${item.link ? `<a href="${item.link}" target="_blank" class="btn-hero-primary" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; display: inline-block;">Acessar Artigo 📄</a>` : ''}
+                </div>
+              </article>
+            `;
+          });
+        },
+        "Repositório de Trabalhos em Atualização"
+      );
+
+      // Carrega Conhecimento / Artigos
+      loadSectionWithLunarState(
+        "knowledge-grid",
+        "Conhecimento",
+        (data, container) => {
+          container.innerHTML = `<div class="vitrines-grid"></div>`;
+          const grid = container.querySelector(".vitrines-grid");
+          data.forEach(item => {
+            grid.innerHTML += `
+              <article class="news-card">
+                <div class="news-body">
+                  <span class="news-tag">${item.categoria || 'Astrofísica'}</span>
+                  <h3 class="news-title" style="margin-top: 0.6rem;">${item.titulo}</h3>
+                  <div style="color: var(--text-muted); font-size: 0.9rem; margin: 0.8rem 0;" class="math-content">${item.conteudo || ''}</div>
+                  <div style="font-size: 0.85rem; color: var(--accent-gold);">✍️ Autor: ${item.autor || 'Equipe UNIVASF'}</div>
+                </div>
+              </article>
+            `;
+          });
+          if (window.MathJax) MathJax.typesetPromise();
+        },
+        "Artigos Científicos em Atualização"
+      );
+    });
+  </script>
+</body>
+</html>

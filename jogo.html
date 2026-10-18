@@ -2,127 +2,656 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Desafio Espacial | Olha Pro Céu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Central de Jogos | Olha Pro Céu UNIVASF</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       TELA DE INTRODUÇÃO LUNAR (ANIMAÇÃO INICIAL)
+       ========================================================================== */
+    .intro-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg-deep-space);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #ffffff15, rgba(0,0,0,0));
+      background-size: 200px 200px;
+    }
+    .intro-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .intro-box {
+      max-width: 500px;
+      padding: 3rem 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-space);
+      border-radius: 20px;
+      box-shadow: 0 0 50px rgba(255, 204, 0, 0.2);
+    }
+    .intro-moon {
+      font-size: 5rem;
+      animation: moonPulse 2.5s infinite ease-in-out;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+    }
+    .intro-title {
+      font-family: var(--font-orbitron);
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .intro-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Estilos da Central de Jogos */
+    .game-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0 3rem 0;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-space);
+      color: var(--text-muted);
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      font-family: var(--font-orbitron);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--accent-gold);
+      color: #000;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+    }
+    .game-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-space);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.8);
+      position: relative;
+    }
+    .score-board {
+      font-family: var(--font-orbitron);
+      font-size: 1.1rem;
+      color: var(--accent-gold);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: #000;
+      border-radius: 12px;
+      border: 1px solid var(--border-space);
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      background: #030305;
+    }
+    .game-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(5, 5, 8, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      z-index: 10;
+    }
+    .game-overlay h3 {
+      font-family: var(--font-orbitron);
+      font-size: 1.6rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .game-overlay p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      max-width: 400px;
+    }
+    .mobile-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .dpad {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .ctrl-btn {
+      background: rgba(255, 204, 0, 0.1);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      padding: 0.8rem 1.2rem;
+      border-radius: 10px;
+      font-family: var(--font-orbitron);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      user-select: none;
+      touch-action: manipulation;
+    }
+    .ctrl-btn:active {
+      background: var(--accent-gold);
+      color: #000;
+    }
+    .action-btn {
+      background: rgba(0, 240, 255, 0.1);
+      border-color: #00f0ff;
+      color: #00f0ff;
+      flex-grow: 1;
+    }
+    .action-btn:active {
+      background: #00f0ff;
+      color: #000;
+    }
+    .action-btn-full {
+      width: 100%;
+      background: var(--accent-gold);
+      color: #000;
+      border: none;
+      padding: 1rem;
+      border-radius: 12px;
+      font-family: var(--font-orbitron);
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="logo">OLHA PRO CÉU <span>UNIVASF</span></a>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="sobre.html">Sobre o Projeto</a>
-      <a href="jogo.html" class="active">Jogo Astronômico</a>
-    </nav>
+  <!-- ==========================================================================
+       TELA DE INTRODUÇÃO LUNAR
+       ========================================================================== -->
+  <div id="intro-overlay" class="intro-overlay">
+    <div class="intro-box">
+      <div class="intro-moon">🌕</div>
+      <h2 class="intro-title">Terminal de Jogos Espaciais</h2>
+      <p class="intro-desc">Calibrando radares astronômicos da UNIVASF e preparando simulações orbitais...</p>
+      <button onclick="revealGameHub()" class="btn-hero-primary" style="cursor: pointer;">Entrar no Terminal 🚀</button>
+    </div>
+  </div>
+
+  <!-- NAVBAR ESPACIAL -->
+  <header class="space-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="space-brand">
+        <div class="orbit-icon">
+          <svg viewBox="0 0 50 50" width="32" height="32">
+            <ellipse cx="25" cy="25" rx="20" ry="8" fill="none" stroke="#3b82f6" stroke-width="2" transform="rotate(-30 25 25)"/>
+            <circle cx="25" cy="25" r="5" fill="#3b82f6"/>
+            <circle cx="38" cy="18" r="2.5" fill="#60a5fa"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">OLHA PRO CEU</span>
+          <span class="brand-sub">• UNIVASF</span>
+        </div>
+      </a>
+      <nav class="nav-menu">
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Exploração ▾</a>
+          <div class="dropdown">
+            <a href="sobre.html">O Projeto</a>
+            <a href="jogo.html" class="active">Minigame Espacial</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Ciência ▾</a>
+          <div class="dropdown">
+            <a href="publicacoes.html">Pesquisas & Artigos</a>
+            <a href="index.html#vitrines">Ações de Inovação</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Terra & Espaço ▾</a>
+          <div class="dropdown">
+            <a href="observatorio.html">Observatório</a>
+            <a href="noticias.html">Notícias Espaciais</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Educação ▾</a>
+          <div class="dropdown">
+            <a href="olimpiadas.html">Olimpíada UNIVASF</a>
+            <a href="laboratorio.html">Laboratório de Inovação</a>
+          </div>
+        </div>
+        <a href="sobre.html" class="nav-link">O Projeto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="apoio.html" class="btn-participe">Participe 🚀</a>
+      </div>
+    </div>
   </header>
 
-  <main class="container">
-    <h2 class="section-title" style="text-align: center;">Quiz Espacial dos Integrantes</h2>
-    
-    <div class="game-container">
-      <div class="score-board">Pontuação: <span id="score">0</span></div>
+  <!-- HERO SECTION -->
+  <section class="hero-space" style="height: 45vh; min-height: 320px;">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content-wrapper" style="padding-top: 3rem;">
+      <div class="location-tag"><span class="dot"></span>FLIPERAMA ESPACIAL • UNIVASF</div>
+      <h1 class="hero-main-title">Central de Minigames</h1>
+      <p class="hero-subtext">Divirta-se pilotando a nave dos defensores e ajudando o Caramelos em sua jornada espacial!</p>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 3rem 1.5rem 5rem 1.5rem;">
+
+    <!-- SELETOR DE JOGOS (ABAS) - ESCALÁVEL -->
+    <div class="game-tabs">
+      <button class="tab-btn active" onclick="switchGame('asteroids')">🚀 Defensores AEB/FAB</button>
+      <button class="tab-btn" onclick="switchGame('runner')">🤖 Caramelos no Espaço</button>
+      <!-- NOVO JOGO FUTURO PODE ENTRAR AQUI FACILMENTE: -->
+      <!-- <button class="tab-btn" onclick="switchGame('novoJogo')">🛰️ Novo Jogo</button> -->
+    </div>
+
+    <!-- JOGO 1: ASTEROIDS DA AEB / FAB -->
+    <div id="game-asteroids-container" class="game-container">
+      <div class="score-board">Pontuação: <span id="asteroids-score">0</span></div>
       
-      <div id="quiz-box">
-        <p id="member-tag" style="color: var(--accent-gold); font-weight: bold;"></p>
-        <div class="game-card" id="planet-icon">🌌</div>
-        <p id="question-text" style="font-size: 1.1rem; margin-bottom: 1rem;"></p>
-        
-        <div class="options-grid" id="options-container">
-          <!-- Opções geradas via JS -->
+      <div class="canvas-wrapper">
+        <canvas id="asteroidsCanvas" width="600" height="320"></canvas>
+        <div id="asteroids-overlay" class="game-overlay">
+          <h3>🚀 Missão Espacial AEB & FAB</h3>
+          <p>Pilote a espaçonave e proteja o espaço orbital brasileiro dos asteroides errantes!</p>
+          <button onclick="startAsteroidsGame()" class="btn-hero-primary" style="cursor: pointer;">Decolar 🚀</button>
         </div>
       </div>
 
-      <div id="result-box" style="display: none;">
-        <h3>Missão Cumprida! 🚀</h3>
-        <p id="final-msg" style="margin: 1rem 0;"></p>
-        <button onclick="restartGame()" class="btn-primary">Jogar Novamente</button>
+      <div class="mobile-controls">
+        <div class="dpad">
+          <button class="ctrl-btn" id="btn-left">◀</button>
+          <button class="ctrl-btn" id="btn-thrust">▲</button>
+          <button class="ctrl-btn" id="btn-right">▶</button>
+        </div>
+        <button class="ctrl-btn action-btn" id="btn-fire">🔥 ATIRAR</button>
       </div>
     </div>
+
+    <!-- JOGO 2: RUNNER DO CARAMELOS -->
+    <div id="game-runner-container" class="game-container" style="display: none;">
+      <div class="score-board">Pontuação: <span id="runner-score">0</span></div>
+      
+      <div class="canvas-wrapper">
+        <canvas id="runnerCanvas" width="600" height="240"></canvas>
+        <div id="runner-overlay" class="game-overlay">
+          <h3>🤖 Aventura Espacial do Caramelos</h3>
+          <p>Ajude o Caramelos a saltar e desviar dos meteoros cósmicos!</p>
+          <button onclick="startRunnerGame()" class="btn-hero-primary" style="cursor: pointer;">Iniciar Missão 🚀</button>
+        </div>
+      </div>
+
+      <div class="mobile-controls" style="margin-top: 1.5rem;">
+        <button class="action-btn-full" id="btn-jump">🚀 SALTAR (ESPAÇO / TOQUE)</button>
+      </div>
+    </div>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 OLHA PRO CÉU — Projeto de Astronomia UNIVASF</p>
+  <!-- RODAPÉ -->
+  <footer class="space-footer">
+    <div class="container">
+      <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <p>&copy; 2026 OLHA PRO CÉU — Projeto de Astronomia UNIVASF</p>
+        <div class="footer-legal-links" style="display: flex; gap: 1.5rem;">
+          <a href="privacidade.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">Política de Privacidade</a>
+          <a href="termos.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
+  <!-- SCRIPTS DOS JOGOS E GERENCIAMENTO INTELIGENTE -->
+  <script src="js/main.js"></script>
   <script>
-    // Substitua os nomes dos integrantes e perguntas conforme a equipe real!
-    const questions = [
-      {
-        member: "Pergunta do Integrante Lucas:",
-        icon: "🪐",
-        question: "Qual é o maior planeta do nosso Sistema Solar?",
-        options: ["Marte", "Júpiter", "Saturno", "Netuno"],
-        answer: 1
-      },
-      {
-        member: "Pergunta da Integrante Sofia:",
-        icon: "☀️",
-        question: "Qual é a estrela mais próxima do planeta Terra?",
-        options: ["Siriús", "Alfa Centauri", "Sol", "Betelgeuse"],
-        answer: 2
-      },
-      {
-        member: "Pergunta da Professora:",
-        icon: "🌕",
-        question: "A Lua possui luz própria?",
-        options: ["Sim", "Não, reflete o Sol", "Apenas na lua cheia", "Sim, no eclipse"],
-        answer: 1
-      }
-    ];
+    // 1. ANIMAÇÃO DE ENTRADA (REVELAR HUB DE JOGOS)
+    function revealGameHub() {
+      const overlay = document.getElementById("intro-overlay");
+      overlay.classList.add("hidden");
+    }
 
-    let currentQ = 0;
-    let score = 0;
+    // 2. GERENCIAMENTO CENTRALIZADO DE TECLADO (BLOQUEIA SCROLL SÓ QUANDO JOGANDO)
+    let activeGame = 'asteroids'; // Controla qual jogo está ativo na aba
 
-    function loadQuestion() {
-      const q = questions[currentQ];
-      document.getElementById("member-tag").innerText = q.member;
-      document.getElementById("planet-icon").innerText = q.icon;
-      document.getElementById("question-text").innerText = q.question;
+    window.addEventListener("keydown", (e) => {
+      const gameKeys = ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
       
-      const optionsContainer = document.getElementById("options-container");
-      optionsContainer.innerHTML = "";
+      // Se a tecla pressionada for de jogo e a intro já sumiu
+      if (gameKeys.includes(e.code) && document.getElementById("intro-overlay").classList.contains("hidden")) {
+        e.preventDefault(); // Bloqueia o scroll da página estritamente durante o jogo!
 
-      q.options.forEach((opt, idx) => {
-        const btn = document.createElement("button");
-        btn.className = "btn-game";
-        btn.innerText = opt;
-        btn.onclick = () => checkAnswer(idx);
-        optionsContainer.appendChild(btn);
+        // Direciona para o jogo ativo correspondente
+        if (activeGame === 'asteroids' && astGameActive) {
+          keys[e.code] = true;
+          if (e.code === "Space" && !e.repeat) shootLaser();
+        } else if (activeGame === 'runner' && runnerGameActive) {
+          if (e.code === "Space" || e.code === "ArrowUp") jumpRunner();
+        }
+      }
+    }, { passive: false });
+
+    window.addEventListener("keyup", (e) => {
+      if (activeGame === 'asteroids') {
+        keys[e.code] = false;
+      }
+    });
+
+    // 3. ALTERNÂNCIA DE ABAS ESCALÁVEL
+    function switchGame(gameType) {
+      activeGame = gameType; // Atualiza o estado global do jogo ativo
+      
+      const astCont = document.getElementById("game-asteroids-container");
+      const runnerCont = document.getElementById("game-runner-container");
+      const btns = document.querySelectorAll(".tab-btn");
+
+      btns.forEach(btn => btn.classList.remove("active"));
+      astCont.style.display = 'none';
+      runnerCont.style.display = 'none';
+
+      if (gameType === 'asteroids') {
+        astCont.style.display = 'block';
+        btns[0].classList.add("active");
+      } else if (gameType === 'runner') {
+        runnerCont.style.display = 'block';
+        btns[1].classList.add("active");
+      }
+      // Aqui basta adicionar novos 'else if' caso crie novos jogos no futuro!
+    }
+
+    /* ==========================================================================
+       JOGO 1: ASTEROIDS AEB / FAB
+       ========================================================================== */
+    const astCanvas = document.getElementById("asteroidsCanvas");
+    const astCtx = astCanvas.getContext("2d");
+
+    let astScore = 0;
+    let astGameActive = false;
+    let astAnimationId;
+
+    const ship = {
+      x: astCanvas.width / 2,
+      y: astCanvas.height / 2,
+      r: 14,
+      a: 90 / 180 * Math.PI,
+      thrust: { x: 0, y: 0 }
+    };
+
+    let lasers = [];
+    let asteroids = [];
+    const keys = {};
+
+    function setupTouchBtn(btnId, keyCode) {
+      const btn = document.getElementById(btnId);
+      if(!btn) return;
+      const startAction = (e) => { 
+        e.preventDefault(); 
+        keys[keyCode] = true; 
+        if (keyCode === "Space" && astGameActive) shootLaser(); 
+      };
+      const endAction = (e) => { 
+        e.preventDefault(); 
+        keys[keyCode] = false; 
+      };
+      btn.addEventListener("touchstart", startAction, { passive: false });
+      btn.addEventListener("touchend", endAction, { passive: false });
+      btn.addEventListener("mousedown", startAction);
+      btn.addEventListener("mouseup", endAction);
+    }
+
+    setupTouchBtn("btn-left", "ArrowLeft");
+    setupTouchBtn("btn-right", "ArrowRight");
+    setupTouchBtn("btn-thrust", "ArrowUp");
+    setupTouchBtn("btn-fire", "Space");
+
+    function createAsteroid(x, y, r) {
+      return { x, y, r, xv: (Math.random() - 0.5) * 2.5, yv: (Math.random() - 0.5) * 2.5 };
+    }
+
+    function shootLaser() {
+      if (!astGameActive) return;
+      lasers.push({
+        x: ship.x + 4/3 * ship.r * Math.cos(ship.a),
+        y: ship.y - 4/3 * ship.r * Math.sin(ship.a),
+        xv: 6 * Math.cos(ship.a),
+        yv: -6 * Math.sin(ship.a),
+        life: 40
       });
     }
 
-    function checkAnswer(selected) {
-      if(selected === questions[currentQ].answer) {
-        score += 10;
-        document.getElementById("score").innerText = score;
-      }
-      
-      currentQ++;
-      if(currentQ < questions.length) {
-        loadQuestion();
+    function updateAsteroidsGame() {
+      if (!astGameActive) return;
+      astCtx.clearRect(0, 0, astCanvas.width, astCanvas.height);
+
+      if (keys["ArrowLeft"]) ship.a += 0.07;
+      if (keys["ArrowRight"]) ship.a -= 0.07;
+      if (keys["ArrowUp"]) {
+        ship.thrust.x += 0.12 * Math.cos(ship.a);
+        ship.thrust.y -= 0.12 * Math.sin(ship.a);
       } else {
-        showResult();
+        ship.thrust.x *= 0.98;
+        ship.thrust.y *= 0.98;
+      }
+
+      ship.x += ship.thrust.x;
+      ship.y += ship.thrust.y;
+
+      if (ship.x < -ship.r) ship.x = astCanvas.width + ship.r;
+      if (ship.x > astCanvas.width + ship.r) ship.x = -ship.r;
+      if (ship.y < -ship.r) ship.y = astCanvas.height + ship.r;
+      if (ship.y > astCanvas.height + ship.r) ship.y = -ship.r;
+
+      // Desenhar Nave
+      astCtx.strokeStyle = "#ffcc00";
+      astCtx.fillStyle = "#121218";
+      astCtx.lineWidth = 2;
+      astCtx.beginPath();
+      astCtx.moveTo(ship.x + 4/3 * ship.r * Math.cos(ship.a), ship.y - 4/3 * ship.r * Math.sin(ship.a));
+      astCtx.lineTo(ship.x - ship.r * (Math.cos(ship.a) + Math.sin(ship.a)), ship.y + ship.r * (Math.sin(ship.a) - Math.cos(ship.a)));
+      astCtx.lineTo(ship.x - ship.r * (Math.cos(ship.a) - Math.sin(ship.a)), ship.y + ship.r * (Math.sin(ship.a) + Math.cos(ship.a)));
+      astCtx.closePath();
+      astCtx.fill();
+      astCtx.stroke();
+
+      astCtx.fillStyle = "#00f0ff";
+      astCtx.font = "8px sans-serif";
+      astCtx.fillText("FAB", ship.x - 8, ship.y + 3);
+
+      // Lasers
+      for (let i = lasers.length - 1; i >= 0; i--) {
+        let l = lasers[i];
+        l.x += l.xv; l.y += l.yv; l.life--;
+        astCtx.fillStyle = "#00f0ff";
+        astCtx.beginPath();
+        astCtx.arc(l.x, l.y, 3, 0, Math.PI * 2);
+        astCtx.fill();
+        if (l.life <= 0) lasers.splice(i, 1);
+      }
+
+      // Asteroides
+      for (let i = asteroids.length - 1; i >= 0; i--) {
+        let a = asteroids[i];
+        a.x += a.xv; a.y += a.yv;
+        if (a.x < -a.r) a.x = astCanvas.width + a.r;
+        if (a.x > astCanvas.width + a.r) a.x = -a.r;
+        if (a.y < -a.r) a.y = astCanvas.height + a.r;
+        if (a.y > astCanvas.height + a.r) a.y = -a.r;
+
+        astCtx.strokeStyle = "#a0a0b0";
+        astCtx.lineWidth = 1.5;
+        astCtx.beginPath();
+        astCtx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+        astCtx.stroke();
+
+        for (let j = lasers.length - 1; j >= 0; j--) {
+          let l = lasers[j];
+          if (Math.hypot(l.x - a.x, l.y - a.y) < a.r) {
+            lasers.splice(j, 1);
+            if (a.r > 12) {
+              asteroids.push(createAsteroid(a.x, a.y, a.r / 2));
+              asteroids.push(createAsteroid(a.x, a.y, a.r / 2));
+            }
+            asteroids.splice(i, 1);
+            astScore += 20;
+            document.getElementById("asteroids-score").innerText = astScore;
+            break;
+          }
+        }
+
+        if (asteroids[i] && Math.hypot(ship.x - a.x, ship.y - a.y) < ship.r + a.r) {
+          endAsteroidsGame();
+          return;
+        }
+      }
+
+      if (asteroids.length === 0) {
+        for (let i = 0; i < 4; i++) {
+          asteroids.push(createAsteroid(Math.random() * astCanvas.width, Math.random() * astCanvas.height, 25));
+        }
+      }
+
+      astAnimationId = requestAnimationFrame(updateAsteroidsGame);
+    }
+
+    function startAsteroidsGame() {
+      astScore = 0; lasers = []; asteroids = [];
+      ship.x = astCanvas.width / 2; ship.y = astCanvas.height / 2; ship.thrust = { x: 0, y: 0 };
+      for (let i = 0; i < 4; i++) {
+        asteroids.push(createAsteroid(Math.random() * astCanvas.width, Math.random() * astCanvas.height, 25));
+      }
+      document.getElementById("asteroids-score").innerText = "0";
+      document.getElementById("asteroids-overlay").style.display = "none";
+      astGameActive = true;
+      updateAsteroidsGame();
+    }
+
+    function endAsteroidsGame() {
+      astGameActive = false;
+      cancelAnimationFrame(astAnimationId);
+      const overlay = document.getElementById("asteroids-overlay");
+      overlay.style.display = "flex";
+      overlay.querySelector("h3").innerText = "Nave Atingida!";
+      overlay.querySelector("p").innerText = `Sua missão acumulou ${astScore} pontos!`;
+    }
+
+    /* ==========================================================================
+       JOGO 2: CARAMELOS RUNNER
+       ========================================================================== */
+    const runnerCanvas = document.getElementById("runnerCanvas");
+    const runnerCtx = runnerCanvas.getContext("2d");
+    let runnerScore = 0;
+    let runnerGameActive = false;
+    let runnerAnimationId;
+
+    const caramelos = { x: 50, y: 160, width: 35, height: 45, gravity: 0.6, lift: -11, velocity: 0, groundY: 160, isJumping: false };
+    let obstacles = [];
+    let frameCount = 0;
+
+    function jumpRunner() {
+      if (!caramelos.isJumping && runnerGameActive) {
+        caramelos.velocity = caramelos.lift;
+        caramelos.isJumping = true;
       }
     }
 
-    function showResult() {
-      document.getElementById("quiz-box").style.display = "none";
-      document.getElementById("result-box").style.display = "block";
-      document.getElementById("final-msg").innerText = `Você fez ${score} pontos aprendendo com a equipe do Olha Pro Céu!`;
+    const runnerJumpBtn = document.getElementById("btn-jump");
+    if(runnerJumpBtn) {
+      runnerJumpBtn.addEventListener("touchstart", (e) => { e.preventDefault(); jumpRunner(); }, { passive: false });
+      runnerJumpBtn.addEventListener("click", jumpRunner);
     }
 
-    function restartGame() {
-      currentQ = 0;
-      score = 0;
-      document.getElementById("score").innerText = score;
-      document.getElementById("quiz-box").style.display = "block";
-      document.getElementById("result-box").style.display = "none";
-      loadQuestion();
+    function drawCaramelos() {
+      runnerCtx.fillStyle = "#ffcc00";
+      runnerCtx.fillRect(caramelos.x, caramelos.y, caramelos.width, caramelos.height);
+      runnerCtx.fillStyle = "#050508";
+      runnerCtx.fillRect(caramelos.x + 8, caramelos.y + 8, 20, 10);
+      runnerCtx.fillStyle = "#00f0ff";
+      runnerCtx.fillRect(caramelos.x + 20, caramelos.y + 11, 5, 4);
     }
 
-    // Inicializa o jogo
-    loadQuestion();
+    function updateRunner() {
+      if (!runnerGameActive) return;
+      frameCount++;
+      runnerCtx.clearRect(0, 0, runnerCanvas.width, runnerCanvas.height);
+      
+      caramelos.velocity += caramelos.gravity;
+      caramelos.y += caramelos.velocity;
+
+      if (caramelos.y >= caramelos.groundY) {
+        caramelos.y = caramelos.groundY;
+        caramelos.velocity = 0;
+        caramelos.isJumping = false;
+      }
+
+      drawCaramelos();
+
+      if (frameCount % 90 === 0) {
+        obstacles.push({ x: runnerCanvas.width, y: 175, width: 30, height: 30, icon: '☄️', speed: 5 });
+      }
+
+      for (let i = 0; i < obstacles.length; i++) {
+        let obs = obstacles[i];
+        obs.x -= obs.speed;
+        runnerCtx.font = "24px sans-serif";
+        runnerCtx.fillText(obs.icon, obs.x, obs.y + 20);
+
+        if (caramelos.x < obs.x + obs.width && caramelos.x + caramelos.width > obs.x && caramelos.y < obs.y + obs.height && caramelos.y + caramelos.height > obs.y) {
+          runnerGameActive = false;
+          const overlay = document.getElementById("runner-overlay");
+          overlay.style.display = "flex";
+          overlay.querySelector("h3").innerText = "Fim da Missão!";
+          overlay.querySelector("p").innerText = `O Caramelos marcou ${runnerScore} pontos!`;
+          return;
+        }
+
+        if (obs.x + obs.width < caramelos.x && !obs.passed) {
+          obs.passed = true;
+          runnerScore += 10;
+          document.getElementById("runner-score").innerText = runnerScore;
+        }
+      }
+      runnerAnimationId = requestAnimationFrame(updateRunner);
+    }
+
+    function startRunnerGame() {
+      runnerScore = 0; obstacles = []; frameCount = 0;
+      document.getElementById("runner-overlay").style.display = "none";
+      runnerGameActive = true;
+      updateRunner();
+    }
   </script>
 </body>
 </html>

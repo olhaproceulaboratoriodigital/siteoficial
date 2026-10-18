@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Laboratório de Física & Inovação | Olha Pro Céu UNIVASF</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR ESPACIAL (PADRONIZADA) -->
+  <header class="space-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="space-brand">
+        <div class="orbit-icon">
+          <svg viewBox="0 0 50 50" width="32" height="32">
+            <ellipse cx="25" cy="25" rx="20" ry="8" fill="none" stroke="#3b82f6" stroke-width="2" transform="rotate(-30 25 25)"/>
+            <circle cx="25" cy="25" r="5" fill="#3b82f6"/>
+            <circle cx="38" cy="18" r="2.5" fill="#60a5fa"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">OLHA PRO CEU</span>
+          <span class="brand-sub">• UNIVASF</span>
+        </div>
+      </a>
+      <nav class="nav-menu">
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Exploração ▾</a>
+          <div class="dropdown">
+            <a href="sobre.html">O Projeto</a>
+            <a href="jogo.html">Minigame Espacial</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Ciência ▾</a>
+          <div class="dropdown">
+            <a href="publicacoes.html">Pesquisas & Artigos</a>
+            <a href="index.html#vitrines">Ações de Inovação</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Terra & Espaço ▾</a>
+          <div class="dropdown">
+            <a href="observatorio.html">Observatório</a>
+            <a href="noticias.html">Notícias Espaciais</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Educação ▾</a>
+          <div class="dropdown">
+            <a href="olimpiadas.html">Olimpíada UNIVASF</a>
+            <a href="laboratorio.html" class="active">Laboratório de Inovação</a>
+          </div>
+        </div>
+        <a href="sobre.html" class="nav-link">O Projeto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="apoio.html" class="btn-participe">Participe 🚀</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-space" style="height: 50vh; min-height: 380px;">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content-wrapper" style="padding-top: 3rem;">
+      <div class="location-tag"><span class="dot"></span>INFRAESTRUTURA DE ENSINO & EXPERIMENTAÇÃO • UNIVASF</div>
+      <h1 class="hero-main-title">Laboratório de Física</h1>
+      <p class="hero-subtext">Espaço aberto para criação, prototipagem e desenvolvimento de experimentos científicos, como o nosso projeto do Planetário Digital.</p>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 4rem 1.5rem;">
+    
+    <!-- APRESENTAÇÃO DO ESPAÇO DO LAB DE FÍSICA -->
+    <div style="background: var(--bg-card); border: 1px solid var(--border-space); border-radius: 20px; padding: 3rem; margin-bottom: 4rem;">
+      <span class="sub-header-tag">INCENTIVO À CRIAÇÃO</span>
+      <h2 style="font-size: 2rem; color: #fff; margin: 0.8rem 0 1.2rem 0; font-family: var(--font-orbitron);">Espaço Aberto para Novas Ideias</h2>
+      <p style="color: var(--text-muted); font-size: 1.02rem; margin-bottom: 1.2rem; line-height: 1.7;">
+        O <strong>Laboratório de Física da UNIVASF</strong> é a base prática do projeto <strong>Olha Pro Céu</strong>. É aqui que estudantes, extensionistas e professores se reúnem para planejar experimentos, montar instrumentação e desenvolver ferramentas didáticas para o ensino de astronomia.
+      </p>
+      <p style="color: var(--text-muted); font-size: 1.02rem; line-height: 1.7;">
+        Atualmente, o laboratório está focado na concepção do projeto do <strong>Planetário</strong>, além de estar de portas abertas para novas criações, oficinas de telescópios e projetos acadêmicos voltados para a comunidade.
+      </p>
+    </div>
+
+    <!-- CABEÇALHO DA SEÇÃO DINÂMICA DO GOOGLE SHEETS VIA STEINHQ -->
+    <div class="section-header" style="margin-bottom: 2.5rem;">
+      <div>
+        <span class="sub-header-tag">PROJETOS & INICIATIVAS DO LAB</span>
+        <h2 class="section-heading">Projetos em Cadastramento</h2>
+        <p class="section-subtext">Sincronizado em tempo real com o banco de dados de projetos do laboratório via SteinHQ.</p>
+      </div>
+    </div>
+
+    <!-- CONTAINER DINÂMICO DOS PROJETOS (STEINHQ) -->
+    <div id="lab-projects-container">
+      <div class="news-loading">
+        <div class="spinner"></div>
+        <p>Buscando projetos cadastrados no Google Sheets...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="space-footer">
+    <div class="container">
+      <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <p>&copy; 2026 OLHA PRO CÉU — Projeto de Astronomia UNIVASF</p>
+        <div class="footer-legal-links" style="display: flex; gap: 1.5rem;">
+          <a href="privacidade.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">Política de Privacidade</a>
+          <a href="termos.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT CONECTADO AO STEINHQ (GOOGLE SHEETS) -->
+  <script src="js/main.js"></script>
+  <script>
+    // Substitua a URL abaixo pela URL exata da sua API do SteinHQ
+    const STEIN_LAB_URL = "https://api.steinhq.com/v1/storages/YOUR_STEIN_ID/laboratorio";
+
+    async function loadLabProjects() {
+      const container = document.getElementById('lab-projects-container');
+
+      // Projeto inicial focado no Planetário enquanto a planilha é alimentada
+      const initialProjects = [
+        {
+          titulo: "Projeto Planetário",
+          categoria: "DIVULGAÇÃO CIENTÍFICA",
+          descricao: "Desenvolvimento de espaço e simulação imersiva para projeção de constelações, corpos celestes e palestras interativas de astronomia para escolas da região.",
+          imagem: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=600&auto=format&fit=crop"
+        }
+      ];
+
+      try {
+        const response = await fetch(STEIN_LAB_URL);
+        if (!response.ok) throw new Error("Erro ao acessar API do SteinHQ");
+        const data = await response.json();
+
+        const projects = (data && data.length > 0) ? data : initialProjects;
+        renderLabProjects(projects);
+      } catch (err) {
+        console.warn("SteinHQ do laboratório em aguardo. Exibindo projeto inicial do Planetário.");
+        renderLabProjects(initialProjects);
+      }
+    }
+
+    function renderLabProjects(list) {
+      const container = document.getElementById('lab-projects-container');
+      container.innerHTML = `<div class="vitrines-grid"></div>`;
+      const grid = container.querySelector(".vitrines-grid");
+
+      list.forEach(item => {
+        const title = item.titulo || item.Titulo || "Projeto do Laboratório";
+        const category = item.categoria || item.Categoria || "LABORATÓRIO DE FÍSICA";
+        const desc = item.descricao || item.Descricao || "Projeto em fase de estruturação e criação no laboratório.";
+        const img = item.imagem || item.Imagem || "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=600&auto=format&fit=crop";
+
+        grid.innerHTML += `
+          <div class="news-card">
+            <div class="news-img" style="background-image: url('${img}');"></div>
+            <div class="news-body" style="padding: 1.8rem;">
+              <span class="news-tag">${category}</span>
+              <h3 class="news-title" style="margin-top: 0.6rem; font-size: 1.15rem;">${title}</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">${desc}</p>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadLabProjects);
+  </script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Apoio & Patrocínio | Olha Pro Céu UNIVASF</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       ESTILOS REFINADOS PARA APOIO & PATROCÍNIO
+       ========================================================================== */
+    .sponsor-slider-container {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      padding: 2.5rem 0;
+      background: radial-gradient(circle at center, rgba(255,204,0,0.03) 0%, rgba(18,18,24,0.6) 100%);
+      border-top: 1px solid var(--border-space);
+      border-bottom: 1px solid var(--border-space);
+      margin: 3.5rem 0;
+    }
+    .sponsor-track {
+      display: flex;
+      width: max-content;
+      animation: scrollSponsors 30s linear infinite;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .sponsor-track:hover {
+      animation-play-state: paused;
+    }
+    .sponsor-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-space);
+      padding: 1.2rem 2.2rem;
+      border-radius: 14px;
+      font-family: var(--font-orbitron);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      white-space: nowrap;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      transition: all 0.3s ease;
+    }
+    .sponsor-item:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(255, 204, 0, 0.25);
+    }
+    @keyframes scrollSponsors {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .institutional-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-space);
+      border-radius: 24px;
+      padding: 3.5rem;
+      margin-bottom: 4rem;
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+      position: relative;
+      overflow: hidden;
+    }
+    .institutional-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--accent-gold);
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-space);
+      border-radius: 24px;
+      padding: 3.5rem;
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.85);
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR ESPACIAL (PADRONIZADA) -->
+  <header class="space-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="space-brand">
+        <div class="orbit-icon">
+          <svg viewBox="0 0 50 50" width="32" height="32">
+            <ellipse cx="25" cy="25" rx="20" ry="8" fill="none" stroke="#3b82f6" stroke-width="2" transform="rotate(-30 25 25)"/>
+            <circle cx="25" cy="25" r="5" fill="#3b82f6"/>
+            <circle cx="38" cy="18" r="2.5" fill="#60a5fa"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">OLHA PRO CEU</span>
+          <span class="brand-sub">• UNIVASF</span>
+        </div>
+      </a>
+      <nav class="nav-menu">
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Exploração ▾</a>
+          <div class="dropdown">
+            <a href="sobre.html">O Projeto</a>
+            <a href="jogo.html">Minigame Espacial</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Ciência ▾</a>
+          <div class="dropdown">
+            <a href="publicacoes.html">Pesquisas & Artigos</a>
+            <a href="index.html#vitrines">Ações de Inovação</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Terra & Espaço ▾</a>
+          <div class="dropdown">
+            <a href="observatorio.html">Observatório</a>
+            <a href="noticias.html">Notícias Espaciais</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Educação ▾</a>
+          <div class="dropdown">
+            <a href="olimpiadas.html">Olimpíada UNIVASF</a>
+            <a href="laboratorio.html">Laboratório de Inovação</a>
+          </div>
+        </div>
+        <a href="sobre.html" class="nav-link">O Projeto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#contato-tour" class="btn-participe">Agendar Visita 🚀</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-space" style="height: 55vh; min-height: 400px;">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content-wrapper" style="padding-top: 3rem;">
+      <div class="location-tag"><span class="dot"></span>INVESTIMENTO & REDE DE COLABORAÇÃO</div>
+      <h1 class="hero-main-title">Apoio e Patrocínio</h1>
+      <p class="hero-subtext">Descubra as organizações, o suporte acadêmico da UNIVASF e as empresas parceiras que tornam nossa missão espacial possível.</p>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 4rem 1.5rem;">
+
+    <!-- SEÇÃO 1: SUSTENTO INSTITUCIONAL UNIVASF -->
+    <div class="institutional-box">
+      <div style="flex: 1; min-width: 280px;">
+        <span class="sub-header-tag">PILAR INSTITUCIONAL</span>
+        <h2 style="font-size: 2.2rem; color: #fff; margin: 0.8rem 0 1.2rem 0; font-family: var(--font-orbitron);">O Sustento da UNIVASF</h2>
+        <p style="color: var(--text-muted); font-size: 1.02rem; margin-bottom: 1.2rem; line-height: 1.7;">
+          O projeto <strong>Olha Pro Céu</strong> é mantido e viabilizado através do forte compromisso da <strong>Universidade Federal do Vale do São Francisco (UNIVASF)</strong> com a extensão universitária, a pesquisa e o ensino de ciências.
+        </p>
+        <p style="color: var(--text-muted); font-size: 1.02rem; line-height: 1.7;">
+          Através de bolsas de extensão, suporte laboratorial, infraestrutura de campi e orientação docente qualificada, a universidade garante que a astronomia pública e a capacitação para olimpíadas cheguem de forma gratuita a toda a comunidade do Vale do São Francisco.
+        </p>
+      </div>
+      <div style="text-align: center; flex: 0.6; min-width: 240px; background: rgba(255,255,255,0.02); padding: 2.5rem; border-radius: 18px; border: 1px solid var(--border-space);">
+        <span style="font-size: 4rem; display: block; margin-bottom: 0.8rem;">🏛️</span>
+        <h3 style="color: #fff; font-family: var(--font-orbitron); margin-bottom: 0.4rem; font-size: 1.3rem;">UNIVASF</h3>
+        <p style="color: var(--accent-gold); font-size: 0.85rem; letter-spacing: 1.5px;">Educação, Ciência & Inovação</p>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 2: CARROSSEL DINÂMICO DE PATROCINADORES (STEINHQ / GOOGLE SHEETS) -->
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <span class="sub-header-tag">PARCEIROS & INVESTIDORES</span>
+      <h2 class="section-heading" style="margin-top: 0.5rem;">Empresas e Organizações Apoiadoras</h2>
+      <p class="section-subtext">Empresas e instituições sincronizadas em tempo real que investem no futuro da ciência e da tecnologia.</p>
+    </div>
+
+    <!-- CARROSSEL DINÂMICO (INFINITO) -->
+    <div class="sponsor-slider-container">
+      <div id="sponsor-track" class="sponsor-track">
+        <!-- Carregando via JavaScript -->
+        <div class="sponsor-item">🪐 Carregando apoiadores...</div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 3: QUERO PATROCINAR / SEJA UM INVESTIDOR -->
+    <div class="vitrines-grid" style="margin: 4rem 0;">
+      <div class="news-card">
+        <div class="news-body" style="padding: 2rem;">
+          <span class="news-tag">INVESTIMENTO ESG</span>
+          <h3 class="news-title" style="margin-top: 0.8rem; font-size: 1.2rem;">💎 Por que Patrocinar o Projeto?</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">
+            Sua marca vinculada à educação científica de ponta, apoio a olimpíadas nacionais (OBA/MOBFOG) e impacto social direto no Vale do São Francisco.
+          </p>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-body" style="padding: 2rem;">
+          <span class="news-tag">APOIO INSTITUCIONAL</span>
+          <h3 class="news-title" style="margin-top: 0.8rem; font-size: 1.2rem;">🤝 Parcerias com Escolas</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">
+            Leve oficinas de foguetes, palestras e sessões de observação com telescópios diretamente para a sua instituição de ensino.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 4: TOUR NA FACULDADE (WHATSAPP E INSTAGRAM) -->
+    <section id="contato-tour" style="padding-top: 2rem;">
+      <div class="contact-card">
+        <span class="sub-header-tag">AGENDE SUA VISITA</span>
+        <h2 style="font-size: 2.2rem; color: #fff; margin: 0.8rem 0 1rem 0; font-family: var(--font-orbitron);">Faça um Tour na Faculdade!</h2>
+        <p style="color: var(--text-muted); font-size: 1.02rem; margin-bottom: 2.5rem; line-height: 1.7;">
+          Quer conhecer nossos laboratórios, ver os telescópios de perto e conversar com a equipe do projeto <strong>Olha Pro Céu</strong>? Mande uma mensagem para nós, tire dúvidas ou agende um horário para visitar a UNIVASF!
+        </p>
+
+        <div style="display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;">
+          <!-- Link do WhatsApp -->
+          <a href="https://wa.me/5574999999999?text=Olá!%20Gostaria%20de%20agendar%20um%20tour%20guiado%20para%20conhecer%20o%20projeto%20Olha%20Pro%20Céu%20na%20UNIVASF." target="_blank" class="btn-hero-primary" style="background: #25d366; color: #fff; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);">
+            💬 Agendar via WhatsApp
+          </a>
+
+          <!-- Link do Instagram -->
+          <a href="https://www.instagram.com/olhaproceusbf/" target="_blank" class="btn-hero-outline" style="border-color: #e1306c; color: #fff; background: rgba(225, 48, 108, 0.1);">
+            📸 Seguir / DM no Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="space-footer">
+    <div class="container">
+      <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <p>&copy; 2026 OLHA PRO CÉU — Projeto de Astronomia UNIVASF</p>
+        <div class="footer-legal-links" style="display: flex; gap: 1.5rem;">
+          <a href="privacidade.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">Política de Privacidade</a>
+          <a href="termos.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT DE BUSCA DINÂMICA DE PATROCINADORES VIA STEINHQ -->
+  <script src="js/main.js"></script>
+  <script>
+    const STEIN_PATROCINADORES_URL = "https://api.steinhq.com/v1/storages/YOUR_STEIN_ID/patrocinadores"; // Substitua pela sua URL do SteinHQ
+
+    async function loadSponsors() {
+      const track = document.getElementById('sponsor-track');
+      
+      const fallbackSponsors = [
+        { nome: "Inovação Tech Nordeste", icone: "🪐" },
+        { nome: "Fundect / CNPq", icone: "🛰️" },
+        { nome: "AeroSertão Engenharia", icone: "🚀" },
+        { nome: "Observatório do Vale", icone: "🔭" },
+        { nome: "Energia Solar do Vale", icone: "⚡" }
+      ];
+
+      try {
+        const response = await fetch(STEIN_PATROCINADORES_URL);
+        if (!response.ok) throw new Error("Erro na requisição SteinHQ");
+        const data = await response.json();
+        
+        const sponsors = (data && data.length > 0) ? data : fallbackSponsors;
+        renderSponsors(sponsors);
+      } catch (err) {
+        console.warn("SteinHQ de patrocinadores não configurado. Usando dados padrão.");
+        renderSponsors(fallbackSponsors);
+      }
+    }
+
+    function renderSponsors(list) {
+      const track = document.getElementById('sponsor-track');
+      track.innerHTML = "";
+      
+      let html = "";
+      list.forEach(item => {
+        const icon = item.icone || item.Icone || "🪐";
+        const name = item.nome || item.Nome || item.patrocinador || "Parceiro";
+        const link = item.link || item.Link;
+        
+        const content = `<div class="sponsor-item">${icon} ${name}</div>`;
+        html += link ? `<a href="${link}" target="_blank" style="text-decoration:none;">${content}</a>` : content;
+      });
+      
+      // Duplica o conteúdo para criar o efeito infinito contínuo sem falhas
+      track.innerHTML = html + html;
+    }
+
+    document.addEventListener("DOMContentLoaded", loadSponsors);
+  </script>
+</body>
+</html>

@@ -2,39 +2,279 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre | Olha Pro Céu UNIVASF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sobre o Projeto | Olha Pro Céu UNIVASF</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos específicos organizados para os cards da equipe */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .team-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-space);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+    .team-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-gold);
+    }
+    .team-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-gold);
+      margin-bottom: 1.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    .team-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-orbitron);
+    }
+    .team-role {
+      font-size: 0.72rem;
+      background: rgba(255, 204, 0, 0.1);
+      color: var(--accent-gold);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-family: var(--font-orbitron);
+      font-weight: 600;
+      margin-top: auto;
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="logo">OLHA PRO CÉU <span>UNIVASF</span></a>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="sobre.html" class="active">Sobre o Projeto</a>
-    </nav>
+  <!-- NAVBAR ESPACIAL (PADRONIZADA) -->
+  <header class="space-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="space-brand">
+        <div class="orbit-icon">
+          <svg viewBox="0 0 50 50" width="32" height="32">
+            <ellipse cx="25" cy="25" rx="20" ry="8" fill="none" stroke="#3b82f6" stroke-width="2" transform="rotate(-30 25 25)"/>
+            <circle cx="25" cy="25" r="5" fill="#3b82f6"/>
+            <circle cx="38" cy="18" r="2.5" fill="#60a5fa"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">OLHA PRO CEU</span>
+          <span class="brand-sub">• UNIVASF</span>
+        </div>
+      </a>
+      <nav class="nav-menu">
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Exploração ▾</a>
+          <div class="dropdown">
+            <a href="sobre.html" class="active">O Projeto</a>
+            <a href="jogo.html">Minigame Espacial</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Ciência ▾</a>
+          <div class="dropdown">
+            <a href="publicacoes.html">Pesquisas & Artigos</a>
+            <a href="index.html#vitrines">Ações de Inovação</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Terra & Espaço ▾</a>
+          <div class="dropdown">
+            <a href="observatorio.html">Observatório</a>
+            <a href="noticias.html">Notícias Espaciais</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Educação ▾</a>
+          <div class="dropdown">
+            <a href="olimpiadas.html">Olimpíada UNIVASF</a>
+            <a href="laboratorio.html">Laboratório de Inovação</a>
+          </div>
+        </div>
+        <a href="sobre.html" class="nav-link active">O Projeto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="apoio.html" class="btn-participe">Participe 🚀</a>
+      </div>
+    </div>
   </header>
 
-  <main class="container">
-    <div class="content-box">
-      <h2 class="section-title">Sobre o Projeto</h2>
-      <p>O <strong>Olha Pro Céu</strong> é um projeto de extensão da Universidade Federal do Vale do São Francisco (UNIVASF) dedicado a desmistificar a astronomia e levá-la ao público geral de forma leve, acessível e inspiradora.</p>
-      <br>
-      <p>Nosso foco principal não é a astrofísica teórica complexa, mas sim <strong>impulsionar o amor pela ciência através do olhar atento ao céu noturno</strong>. Acreditamos que observar as estrelas desperta o pensamento crítico e a curiosidade científica em pessoas de todas as idades.</p>
+  <!-- HERO SECTION -->
+  <section class="hero-space" style="height: 50vh; min-height: 380px;">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content-wrapper" style="padding-top: 3rem;">
+      <div class="location-tag"><span class="dot"></span>EXTENSÃO UNIVERSITÁRIA • UNIVASF</div>
+      <h1 class="hero-main-title">Conectando o Vale ao Universo</h1>
+      <p class="hero-subtext">Descubra a história, a missão e a equipe por trás do projeto Olha Pro Céu.</p>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 4rem 1.5rem;">
+    
+    <!-- SOBRE O PROJETO -->
+    <div style="background: var(--bg-card); border: 1px solid var(--border-space); border-radius: 16px; padding: 3rem; margin-bottom: 4rem;">
+      <span class="sub-header-tag">PROPÓSITO & MISSÃO</span>
+      <h2 style="font-size: 2rem; color: #fff; margin: 0.8rem 0 1.5rem 0; font-family: var(--font-orbitron);">O que é o Olha Pro Céu?</h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.2rem;">
+        O <strong>Olha Pro Céu</strong> é um projeto de extensão da Universidade Federal do Vale do São Francisco (UNIVASF) dedicado a desmistificar a astronomia e levá-la ao público geral de forma leve, acessível e inspiradora.
+      </p>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">
+        Nosso foco principal não é a astrofísica teórica complexa, mas sim <strong>impulsionar o amor pela ciência através do olhar atento ao céu noturno</strong>. Acreditamos que observar as estrelas desperta o pensamento crítico e a curiosidade científica em pessoas de todas as idades.
+      </p>
     </div>
 
-    <div class="content-box">
-      <h2 class="section-title">Objetivos</h2>
-      <p>• Promover observações públicas do céu com o uso de telescópios.<br>
-         • Apoiar escolas públicas da região com atividades interativas.<br>
-         • Desmistificar a astronomia e torná-la acessível para a comunidade.</p>
+    <!-- OBJETIVOS -->
+    <div style="background: var(--bg-card); border: 1px solid var(--border-space); border-radius: 16px; padding: 3rem; margin-bottom: 5rem;">
+      <span class="sub-header-tag">METAS E DIRETRIZES</span>
+      <h2 style="font-size: 2rem; color: #fff; margin: 0.8rem 0 1.5rem 0; font-family: var(--font-orbitron);">Nossos Objetivos</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+          <strong style="color: var(--accent-gold); font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">🔭 Observações Públicas</strong>
+          <span style="color: var(--text-muted); font-size: 0.9rem;">Levar telescópios para praças e escolas, permitindo que a comunidade observe planetas, crateras lunares e nebulosas.</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+          <strong style="color: var(--accent-gold); font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">🚀 Olimpíadas & Foguetes</strong>
+          <span style="color: var(--text-muted); font-size: 0.9rem;">Apoiar estudantes da educação básica na preparação para a OBA e MOBFOG com simulados e oficinas práticas.</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+          <strong style="color: var(--accent-gold); font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">💡 Inovação Educacional</strong>
+          <span style="color: var(--text-muted); font-size: 0.9rem;">Desenvolver minigames interativos, plataformas digitais e materiais pedagógicos de baixo custo.</span>
+        </div>
+      </div>
     </div>
+
+    <!-- EQUIPE -->
+    <section>
+      <div class="section-header" style="margin-bottom: 3rem;">
+        <div>
+          <span class="sub-header-tag">MENTORIA & EXTENSÃO</span>
+          <h2 class="section-heading">Nossa Equipe</h2>
+        </div>
+      </div>
+
+      <!-- COORDENADORA -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border-space); border-radius: 16px; padding: 2.5rem; display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 3rem;">
+        <img src="professora.jpg" alt="Professora Coordenadora" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-gold);">
+        <div>
+          <span class="news-tag" style="margin-bottom: 0.5rem;">COORDENAÇÃO GERAL</span>
+          <h3 style="font-size: 1.8rem; color: #fff; margin-bottom: 0.5rem; font-family: var(--font-orbitron);">Profª. Leticia</h3>
+          <p style="color: var(--text-muted); max-width: 600px;">Professora e pesquisadora da UNIVASF, responsável pela orientação, coordenação e desenvolvimento das atividades científicas e de extensão do projeto Olha Pro Céu.</p>
+        </div>
+      </div>
+
+      <!-- GRID ORGANIZADA DOS INTEGRANTES COM FOTOS -->
+      <div class="team-grid">
+        
+        <div class="team-card">
+          <img src="erica.jpg" alt="Érica Borges" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">👩‍🏫</div>
+          <h4 class="team-name">Érica Borges</h4>
+          <span class="team-role">Professora da Educação Básica</span>
+        </div>
+
+        <div class="team-card">
+          <img src="./imgmembros/vinicius.jpeg" alt="Vinicius Oliveira" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">👨‍🏫</div>
+          <h4 class="team-name">Vinicius Oliveira</h4>
+          <span class="team-role">Prof. Me. em Educação Científica</span>
+        </div>
+
+        <div class="team-card">
+          <img src="amilton.jpg" alt="Amilton" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">🚀</div>
+          <h4 class="team-name">Amilton</h4>
+          <span class="team-role">Extensionista</span>
+        </div>
+
+        <div class="team-card">
+          <img src="clara.jpg" alt="Clara" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">✨</div>
+          <h4 class="team-name">Clara</h4>
+          <span class="team-role">Extensionista</span>
+        </div>
+
+        <div class="team-card">
+          <img src="./imgmembros/giovana.jpeg" alt="Giovanna" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">🔭</div>
+          <h4 class="team-name">Giovanna</h4>
+          <span class="team-role">Extensionista</span>
+        </div>
+
+        <div class="team-card">
+          <img src="gustavo.jpg" alt="Gustavo Sena" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">🛰️</div>
+          <h4 class="team-name">Gustavo Sena</h4>
+          <span class="team-role">Extensionista</span>
+        </div>
+
+        <div class="team-card">
+          <img src="iara.jpg" alt="Iara" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">🌟</div>
+          <h4 class="team-name">Iara</h4>
+          <span class="team-role">Extensionista</span>
+        </div>
+
+        <div class="team-card">
+          <img src="./imgmembros/izabely.jpeg" alt="Izabelly Maria" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">🌌</div>
+          <h4 class="team-name">Izabelly Maria</h4>
+          <span class="team-role">Extensionista</span>
+        </div>
+
+        <div class="team-card">
+          <img src="./imgmembros/luanderson.jpeg" alt="Luanderson Pereira" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">💻</div>
+          <h4 class="team-name">Luanderson Pereira</h4>
+          <span class="team-role">Extensionista</span>
+        </div>
+
+        <div class="team-card">
+          <img src="robert.jpg" alt="Robert" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">🪐</div>
+          <h4 class="team-name">Robert</h4>
+          <span class="team-role">Extensionista</span>
+        </div>
+
+        <div class="team-card">
+          <img src="./imgmembros/solon.jpeg" alt="Sólon Lazaro" class="team-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="team-avatar" style="display:none;">🚀</div>
+          <h4 class="team-name">Sólon Lazaro</h4>
+          <span class="team-role">Extensionista</span>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 OLHA PRO CÉU — Projeto de Astronomia UNIVASF</p>
+  <!-- RODAPÉ -->
+  <footer class="space-footer">
+    <div class="container" style="text-align: center;">
+      <p>&copy; 2026 OLHA PRO CÉU — Projeto de Astronomia UNIVASF</p>
+    </div>
   </footer>
 
+  <!-- SCRIPTS -->
+  <script src="js/main.js"></script>
 </body>
 </html>

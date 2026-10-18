@@ -3,67 +3,377 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olha Pro Céu | Astronomia UNIVASF</title>
+  <title>Olha Pro Céu | Observatório Espacial UNIVASF</title>
+  <meta name="description" content="Pesquisa, educação científica e inovação espacial conectando a UNIVASF ao universo.">
   <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts para tipografia espacial -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="logo">OLHA PRO CÉU <span>UNIVASF</span></a>
-    <nav>
-      <a href="index.html" class="active">Início</a>
-      <a href="sobre.html">Sobre o Projeto</a>
-      <a href="jogo.html">Jogo Astronômico</a>
-    </nav>
+  <!-- NAVBAR ESTILO ORGANIZAÇÃO ESPACIAL -->
+  <header class="space-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="space-brand">
+        <div class="orbit-icon">
+          <svg viewBox="0 0 50 50" width="32" height="32">
+            <ellipse cx="25" cy="25" rx="20" ry="8" fill="none" stroke="#3b82f6" stroke-width="2" transform="rotate(-30 25 25)"/>
+            <circle cx="25" cy="25" r="5" fill="#3b82f6"/>
+            <circle cx="38" cy="18" r="2.5" fill="#60a5fa"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">OLHA PRO CEU</span>
+          <span class="brand-sub">• UNIVASF</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Exploração ▾</a>
+          <div class="dropdown">
+            <a href="sobre.html">O Projeto</a>
+            <a href="jogo.html">Minigame Espacial</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Ciência ▾</a>
+          <div class="dropdown">
+            <a href="publicacoes.html">Pesquisas & Artigos</a>
+            <a href="#vitrines">Ações de Inovação</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Terra & Espaço ▾</a>
+          <div class="dropdown">
+            <a href="observatorio.html">Observatório</a>
+            <a href="noticias.html">Notícias Espaciais</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="#" class="nav-link">Educação ▾</a>
+          <div class="dropdown">
+            <a href="olimpiadas.html">Olimpíada UNIVASF</a>
+            <a href="laboratorio.html">Laboratório de Inovação</a>
+          </div>
+        </div>
+        <a href="sobre.html" class="nav-link">O Projeto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="search-btn" aria-label="Buscar">🔍</button>
+        <a href="apoio.html" class="btn-participe">Participe</a>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <img src="logo.png" alt="Logo Olha Pro Céu UNIVASF" class="logo-img">
-      <h1>OLHA PRO CÉU</h1>
-      <div class="slogan">Conectando olhares, inspirando futuros.</div>
-      <p class="desc">Projeto de extensão universitária da UNIVASF voltado para a divulgação científica e o incentivo à paixão pela Astronomia no Vale do São Francisco.</p>
-      <div>
-        <a href="sobre.html" class="btn-primary">Nossa Missão</a>
-        <a href="jogo.html" class="btn-primary" style="margin-left: 10px;">Jogar Agora 🚀</a>
+  <!-- HERO SLIDESHOW / MÍDIAS ESPACIAIS DE BACKGROUND -->
+  <section class="hero-space">
+    <!-- SLIDER DE FUNDO (MÍDIAS: TERRA, LUA, LOGO, VÍDEO DO ESPAÇO) -->
+    <div class="hero-slides">
+      <!-- Slide 1: Terra Vista do Espaço -->
+      <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1920&auto=format&fit=crop');"></div>
+      
+      <!-- Slide 2: Vídeo do Espaço / Estrelas -->
+      <div class="slide">
+        <video autoplay loop muted playsinline class="bg-video">
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-background-27416-large.mp4" type="video/mp4">
+        </video>
       </div>
+
+      <!-- Slide 3: Foto Detalhada da Lua -->
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522030299830-16b8d3d049fe?q=80&w=1920&auto=format&fit=crop');"></div>
+
+      <!-- Slide 4: Logo Oficial com Brilho do Espaço -->
+      <div class="slide slide-logo">
+        <img src="logo.png" alt="Logo Olha Pro Céu" class="hero-logo-slide">
+      </div>
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content-wrapper">
+      <div class="location-tag">
+        <span class="dot"></span> UNIVASF • BAHIA • NORDESTE • BRASIL
+      </div>
+      
+      <h1 class="hero-main-title">
+        O Nordeste também<br>olha para o universo.
+      </h1>
+      
+      <p class="hero-subtext">
+        Pesquisa, educação científica e inovação espacial conectando a universidade à sociedade.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#vitrines" class="btn-hero-primary">
+          Explore nossas iniciativas <span class="arrow">→</span>
+        </a>
+        <a href="sobre.html" class="btn-hero-outline">
+          Conheça o projeto
+        </a>
+      </div>
+    </div>
+
+    <!-- Indicador de Posição dos Slides -->
+    <div class="slide-indicators">
+      <span class="ind-num">01</span>
+      <div class="ind-bar"><div class="ind-progress"></div></div>
+      <span class="ind-num">04</span>
+      <p class="slide-caption">O conhecimento também é uma forma de chegar mais longe.</p>
     </div>
   </section>
 
-  <main class="container">
-    <h2 class="section-title">Nossas Ações</h2>
+  <main class="main-content">
     
-    <div class="projects-grid">
-      <article class="card">
-        <div class="card-body">
-          <div class="card-tag">Observação Telescópica</div>
-          <h3 class="card-title">Noites de Observação</h3>
-          <p class="card-text">Sessões práticas onde a comunidade pode observar a Lua, planetas e aglomerados através de telescópios.</p>
-        </div>
-      </article>
+    <!-- VITRINES VISUAIS ATEMPORAIS -->
+    <section id="vitrines" class="vitrines-section">
+      <div class="container">
+        <div class="vitrines-grid">
+          
+          <article class="vitrine-card">
+            <div class="vitrine-img-holder" style="background-image: url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=800&auto=format&fit=crop');"></div>
+            <div class="vitrine-overlay"></div>
+            <div class="vitrine-content">
+              <span class="card-badge">CIÊNCIA</span>
+              <h3>CIÊNCIA EM DESTAQUE</h3>
+              <p>Pesquisas da UNIVASF revelam novos dados sobre a formação de estrelas e astronomia observacional no Nordeste.</p>
+              <a href="publicacoes.html" class="vitrine-link">Ver mais →</a>
+            </div>
+          </article>
 
-      <article class="card">
-        <div class="card-body">
-          <div class="card-tag">Divulgação Científica</div>
-          <h3 class="card-title">Astronomia na Comunidade</h3>
-          <p class="card-text">Oficinas pedagógicas e conversas dinâmicas para despertar a curiosidade de crianças e jovens sobre o universo.</p>
-        </div>
-      </article>
+          <article class="vitrine-card">
+            <div class="vitrine-img-holder" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop');"></div>
+            <div class="vitrine-overlay"></div>
+            <div class="vitrine-content">
+              <span class="card-badge">TERRA & ESPAÇO</span>
+              <h3>TERRA VISTA DO ESPAÇO</h3>
+              <p>Imagens e dados que mostram como o estudo e o monitoramento espacial ajudam a entender e proteger o nosso planeta.</p>
+              <a href="sobre.html" class="vitrine-link">Ver mais →</a>
+            </div>
+          </article>
 
-      <article class="card">
-        <div class="card-body">
-          <div class="card-tag">Interatividade</div>
-          <h3 class="card-title">Minigame Espacial</h3>
-          <p class="card-text">Aprenda curiosidades astronômicas com a equipe do projeto em nosso jogo interativo.</p>
-          <a href="jogo.html" class="btn-primary btn-sm">Jogar</a>
+          <article class="vitrine-card">
+            <div class="vitrine-img-holder" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop');"></div>
+            <div class="vitrine-overlay"></div>
+            <div class="vitrine-content">
+              <span class="card-badge">EDUCAÇÃO</span>
+              <h3>EDUCAÇÃO E OLIMPÍADAS</h3>
+              <p>Formação de jovens talentos, suporte à Olimpíada da UNIVASF e projetos que ampliam o acesso à ciência astronômica.</p>
+              <a href="jogo.html" class="vitrine-link">Ver mais →</a>
+            </div>
+          </article>
+
         </div>
-      </article>
-    </div>
+      </div>
+    </section>
+
+    <!-- NOTÍCIAS RECENTES (INTEGRAÇÃO DINÂMICA STEINHQ / GOOGLE SHEETS) -->
+    <section id="noticias" class="news-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="sub-header-tag">ATUALIZAÇÕES ESPACIAIS</span>
+            <h2 class="section-heading">Últimas notícias</h2>
+          </div>
+          <a href="#" class="view-all-link">Ver todas as notícias →</a>
+        </div>
+
+        <div id="news-container" class="news-grid">
+          <div class="news-loading">
+            <div class="spinner"></div>
+            <p>Carregando notícias de AEB, INPE e UNIVASF...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O PODER DE NOSSA MISSÃO (OBSERVATÓRIO COM FRASE IMPACTANTE) -->
+    <section id="observatorio" class="mission-banner">
+      <div class="container">
+        <div class="mission-card">
+          <div class="mission-bg-img" style="background-image: url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1600&auto=format&fit=crop');"></div>
+          <div class="mission-overlay"></div>
+          <div class="mission-text-content">
+            <span class="mission-tag">NOSSO PROPÓSITO</span>
+            <h2 class="mission-title">O espaço começa aqui.<br>O poder de nossa missão.</h2>
+            <p class="mission-desc">
+              Mais do que observar o universo, queremos inspirar pessoas, gerar conhecimento e construir um futuro com mais ciência, educação e oportunidades para o Nordeste.
+            </p>
+            <a href="sobre.html" class="btn-mission">Saiba mais sobre o projeto →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LABORATÓRIO DE INOVAÇÃO (FOTOS LOCAIS / INFRAESTRUTURA) -->
+    <section id="laboratorio" class="lab-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="sub-header-tag">ESTRUTURA & TECNOLOGIA</span>
+            <h2 class="section-heading">Nosso Laboratório de Inovação</h2>
+          </div>
+          <p class="section-subtext">Espaço dedicado ao desenvolvimento de minigames, oficinas e pesquisa em astronomia.</p>
+        </div>
+
+        <div class="lab-gallery">
+          <div class="lab-item">
+            <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=600&auto=format&fit=crop" alt="Laboratório UNIVASF 1">
+            <div class="lab-caption">Desenvolvimento & Simulação Espacial</div>
+          </div>
+          <div class="lab-item">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop" alt="Laboratório UNIVASF 2">
+            <div class="lab-caption">Oficinas Pedagógicas & Telescópios</div>
+          </div>
+          <div class="lab-item">
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=600&auto=format&fit=crop" alt="Laboratório UNIVASF 3">
+            <div class="lab-caption">Inovação e Projetos Estudantis</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 OLHA PRO CÉU — Projeto de Astronomia UNIVASF</p>
+  <!-- RODAPÉ DE ORGANIZAÇÃO ESPACIAL -->
+  <footer class="space-footer">
+    <div class="container">
+      <div class="footer-pills">
+        <div class="pill-item">
+          <span class="pill-icon">🎓</span>
+          <div>
+            <strong>Educação científica</strong>
+            <span>para o futuro</span>
+          </div>
+        </div>
+        <div class="pill-item">
+          <span class="pill-icon">🔭</span>
+          <div>
+            <strong>Pesquisa e inovação</strong>
+            <span>com impacto regional</span>
+          </div>
+        </div>
+        <div class="pill-item">
+          <span class="pill-icon">🌵</span>
+          <div>
+            <strong>Bahia e Nordeste</strong>
+            <span>no centro do conhecimento</span>
+          </div>
+        </div>
+      </div>
+
+    <div class="footer-bottom" style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+  <p>&copy; 2026 OLHA PRO CÉU — Projeto de Inovação e Astronomia UNIVASF</p>
+  <div class="footer-legal-links" style="display: flex; gap: 1.5rem;">
+    <a href="privacidade.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">Política de Privacidade</a>
+    <a href="termos.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">Termos de Uso</a>
+  </div>
+</div>
+    </div>
   </footer>
 
+  <!-- SCRIPT DE TRANSIÇÃO DAS IMAGENS E CARREGAMENTO DE NOTÍCIAS VIA STEINHQ -->
+  <script>
+    // 1. CARROSSEL / TRANSIÇÃO DAS IMAGENS DE FUNDO DO HERO
+    const slides = document.querySelectorAll('.hero-slides .slide');
+    const progressBar = document.querySelector('.ind-progress');
+    let currentSlide = 0;
+    const slideDuration = 6000; // 6 segundos por imagem/vídeo
+
+    function changeSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+
+      // Reinicia animação da barra de progresso
+      if (progressBar) {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+        setTimeout(() => {
+          progressBar.style.transition = `width ${slideDuration}ms linear`;
+          progressBar.style.width = '100%';
+        }, 50);
+      }
+    }
+
+    setInterval(changeSlide, slideDuration);
+    // Inicia barra no load
+    if (progressBar) {
+      progressBar.style.transition = `width ${slideDuration}ms linear`;
+      progressBar.style.width = '100%';
+    }
+
+    // 2. BUSCA DE NOTÍCIAS DINÂMICAS VIA STEINHQ (GOOGLE SHEETS)
+    const STEINHQ_API_URL = "https://api.steinhq.com/v1/storages/YOUR_STEIN_ID/noticias"; // Substitua com a URL da sua planilha no SteinHQ
+
+    async function loadNews() {
+      const container = document.getElementById('news-container');
+      
+      try {
+        const response = await fetch(STEINHQ_API_URL);
+        if (!response.ok) throw new Error("Erro na requisição SteinHQ");
+        const data = await response.json();
+
+        if (data && data.length > 0) {
+          container.innerHTML = "";
+          // Pega as últimas 3 notícias
+          data.slice(-3).reverse().forEach(item => {
+            container.innerHTML += `
+              <article class="news-card">
+                <div class="news-img" style="background-image: url('${item.imagem || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=400&auto=format&fit=crop'}');"></div>
+                <div class="news-body">
+                  <span class="news-date">${item.data || '2026'} • ${item.fonte || 'AEB / INPE'}</span>
+                  <h4 class="news-title">${item.titulo}</h4>
+                  <span class="news-tag">${item.categoria || 'ASTRONOMIA'}</span>
+                </div>
+              </article>
+            `;
+          });
+        } else {
+          showFallbackNews();
+        }
+      } catch (err) {
+        console.warn("SteinHQ não configurado ou sem dados. Exibindo notícias padrão demonstrativas.");
+        showFallbackNews();
+      }
+    }
+
+    function showFallbackNews() {
+      const container = document.getElementById('news-container');
+      container.innerHTML = `
+        <article class="news-card">
+          <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=400&auto=format&fit=crop');"></div>
+          <div class="news-body">
+            <span class="news-date">12 ABR 2026 • AEB / UNIVASF</span>
+            <h4 class="news-title">Chuva de meteoros Líridas poderá ser vista com clareza no Nordeste</h4>
+            <span class="news-tag">ASTRONOMIA</span>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=400&auto=format&fit=crop');"></div>
+          <div class="news-body">
+            <span class="news-date">08 ABR 2026 • INPE</span>
+            <h4 class="news-title">UNIVASF inicia projeto de monitoramento e análise de dados de satélites</h4>
+            <span class="news-tag">PESQUISA</span>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=400&auto=format&fit=crop');"></div>
+          <div class="news-body">
+            <span class="news-date">02 ABR 2026 • OLHA PRO CÉU</span>
+            <h4 class="news-title">Inscrições abertas para as oficinas preparatórias da Olimpíada da UNIVASF 2026</h4>
+            <span class="news-tag">EDUCAÇÃO</span>
+          </div>
+        </article>
+      `;
+    }
+
+    loadNews();
+  </script>
 </body>
 </html>
