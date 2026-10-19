@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Publicações & Trabalhos | Olha Pro Céu UNIVASF</title>
+  <title>Publicações Educativas | Olha Pro Céu UNIVASF</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
-  <!-- MathJax para fórmulas matemáticas -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -41,7 +38,7 @@
         <div class="nav-item has-dropdown">
           <a href="#" class="nav-link">Ciência ▾</a>
           <div class="dropdown">
-            <a href="publicacoes.html" class="active">Pesquisas & Artigos</a>
+            <a href="publicacoes.html" class="active">Publicações</a>
             <a href="index.html#vitrines">Ações de Inovação</a>
           </div>
         </div>
@@ -71,34 +68,23 @@
   <section class="hero-space" style="height: 50vh; min-height: 380px;">
     <div class="hero-overlay"></div>
     <div class="container hero-content-wrapper" style="padding-top: 3rem;">
-      <div class="location-tag"><span class="dot"></span>PESQUISA & PRODUÇÃO CIENTÍFICA</div>
-      <h1 class="hero-main-title">Publicações & Trabalhos Acadêmicos</h1>
-      <p class="hero-subtext">Artigos, relatórios de pesquisa e fundamentos de astrofísica desenvolvidos pela equipe da UNIVASF.</p>
+      <div class="location-tag"><span class="dot"></span>PRODUÇÃO EDUCATIVA • ESTUDANTES</div>
+      <h1 class="hero-main-title">Publicações Científicas</h1>
+      <p class="hero-subtext">Textos educativos, curiosidades e materiais criados pelos estudantes para disseminar o amor pela astronomia.</p>
     </div>
   </section>
 
   <main class="container" style="padding: 4rem 1.5rem;">
     
-    <!-- SEÇÃO 1: TRABALHOS ACADÊMICOS -->
-    <section class="pub-section" style="margin-bottom: 4rem;">
-      <div class="section-header" style="margin-bottom: 2rem;">
-        <div>
-          <span class="sub-header-tag">DOCUMENTAÇÃO OFICIAL</span>
-          <h2 class="section-heading">Relatórios & Trabalhos Acadêmicos</h2>
-        </div>
-      </div>
-      <div id="academic-grid"></div>
-    </section>
-
-    <!-- SEÇÃO 2: CONHECIMENTO E CÁLCULOS -->
+    <!-- SEÇÃO DE PUBLICAÇÕES DINÂMICAS -->
     <section class="pub-section">
       <div class="section-header" style="margin-bottom: 2rem;">
         <div>
-          <span class="sub-header-tag">ASTROFÍSICA E TEORIA</span>
-          <h2 class="section-heading">Conhecimento, Cálculos & Artigos</h2>
+          <span class="sub-header-tag">CONTEÚDO DOS ALUNOS</span>
+          <h2 class="section-heading">Artigos & Textos Educativos</h2>
         </div>
       </div>
-      <div id="knowledge-grid"></div>
+      <div id="academic-grid"></div>
     </section>
 
   </main>
@@ -120,54 +106,107 @@
   <script src="js/main.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Carrega Trabalhos
       loadSectionWithLunarState(
         "academic-grid",
-        "Trabalhos",
+        "Publicacoes",
         (data, container) => {
-          container.innerHTML = `<div class="vitrines-grid"></div>`;
-          const grid = container.querySelector(".vitrines-grid");
+          container.innerHTML = `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem;"></div>`;
+          const grid = container.querySelector("div");
+          
           data.forEach(item => {
-            grid.innerHTML += `
-              <article class="news-card">
-                <div class="news-body">
-                  <span class="news-tag">${item.categoria || 'Relatório Acadêmico'}</span>
-                  <h3 class="news-title" style="margin-top: 0.6rem;">${item.titulo}</h3>
-                  <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.8rem 0;">${item.resumo || ''}</p>
-                  <div style="font-size: 0.85rem; color: var(--accent-gold); margin-bottom: 1rem;">✍️ Autor: ${item.autor || 'Equipe UNIVASF'}</div>
-                  ${item.link ? `<a href="${item.link}" target="_blank" class="btn-hero-primary" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; display: inline-block;">Acessar Artigo 📄</a>` : ''}
-                </div>
-              </article>
-            `;
-          });
-        },
-        "Repositório de Trabalhos em Atualização"
-      );
+            const uniqueId = item.id || Math.random().toString(36).substring(2, 9);
 
-      // Carrega Conhecimento / Artigos
-      loadSectionWithLunarState(
-        "knowledge-grid",
-        "Conhecimento",
-        (data, container) => {
-          container.innerHTML = `<div class="vitrines-grid"></div>`;
-          const grid = container.querySelector(".vitrines-grid");
-          data.forEach(item => {
+            // Renderiza o vídeo do YouTube logo abaixo do título se houver video_id, senão exibe imagem se houver
+            let mediaHTML = '';
+            if (item.video_id) {
+              mediaHTML = `
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin: 1rem 0; border: 1px solid var(--border-space);">
+                  <iframe src="https://www.youtube.com/embed/${item.video_id}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+                </div>
+              `;
+            } else if (item.imagem) {
+              mediaHTML = `
+                <div style="background-image: url('${item.imagem}'); height: 210px; background-size: cover; background-position: center; border-radius: 12px; margin: 1rem 0; border: 1px solid var(--border-space);"></div>
+              `;
+            }
+
+            // Trata o texto completo preservando quebras de linha da planilha
+            const textoCompletoFormatado = (item.texto_completo || '')
+              .replace(/\\n/g, '<br>');
+
             grid.innerHTML += `
-              <article class="news-card">
-                <div class="news-body">
-                  <span class="news-tag">${item.categoria || 'Astrofísica'}</span>
-                  <h3 class="news-title" style="margin-top: 0.6rem;">${item.titulo}</h3>
-                  <div style="color: var(--text-muted); font-size: 0.9rem; margin: 0.8rem 0;" class="math-content">${item.conteudo || ''}</div>
-                  <div style="font-size: 0.85rem; color: var(--accent-gold);">✍️ Autor: ${item.autor || 'Equipe UNIVASF'}</div>
+              <article class="news-card" style="background: var(--bg-card); border: 1px solid var(--border-space); border-radius: 18px; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.6);">
+                <div>
+                  <!-- Categoria e Data -->
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                    <span class="news-tag">${item.categoria || 'EDUCAÇÃO CIENTÍFICA'}</span>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">${item.data || '2026'}</span>
+                  </div>
+                  
+                  <!-- Título -->
+                  <h3 class="news-title" style="font-size: 1.3rem; color: #fff; margin-bottom: 0.5rem; font-family: var(--font-orbitron);">${item.titulo}</h3>
+                  
+                  <!-- Mídia (Vídeo ou Imagem) logo abaixo do título -->
+                  ${mediaHTML}
+                  
+                  <!-- Resumo (O Gancho de Leitura) -->
+                  <p style="color: var(--text-primary); font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.2rem; font-weight: 500; border-left: 3px solid var(--accent-gold); padding-left: 0.8rem;">
+                    ${item.resumo || ''}
+                  </p>
+
+                  <!-- Container do Texto Completo (Expansível) -->
+                  <div id="full-text-${uniqueId}" style="display: none; color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.5rem; white-space: pre-line; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 1rem;">
+                    ${textoCompletoFormatado}
+                  </div>
+                </div>
+
+                <!-- Rodapé do Card: Autor, Botão de Expandir e Referência -->
+                <div style="border-top: 1px solid var(--border-space); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                    <span style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 600;">✍️ ${item.autor || 'Estudante UNIVASF'}</span>
+                    
+                    ${item.texto_completo ? `
+                      <button onclick="toggleTexto('${uniqueId}')" id="btn-text-${uniqueId}" style="background: rgba(255,204,0,0.1); border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 0.35rem 0.9rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: var(--font-orbitron);">
+                        📖 Ler Texto Completo
+                      </button>
+                    ` : ''}
+                  </div>
+
+                  <!-- Link de Referência bem exposto -->
+                  ${item.referencia ? `
+                    <div style="background: rgba(0, 240, 255, 0.05); border: 1px solid rgba(0, 240, 255, 0.2); padding: 0.5rem 0.8rem; border-radius: 8px; font-size: 0.8rem; display: flex; align-items: center; justify-content: space-between;">
+                      <span style="color: var(--text-muted);">📚 Para se aprofundar:</span>
+                      <a href="${item.referencia}" target="_blank" style="color: #00f0ff; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.3rem;">
+                        Acessar Referência ↗
+                      </a>
+                    </div>
+                  ` : ''}
                 </div>
               </article>
             `;
           });
-          if (window.MathJax) MathJax.typesetPromise();
         },
-        "Artigos Científicos em Atualização"
+        "Publicações dos Alunos em Atualização"
       );
     });
+
+    // Função global para alternar o texto completo
+    function toggleTexto(id) {
+      const textDiv = document.getElementById(`full-text-${id}`);
+      const btn = document.getElementById(`btn-text-${id}`);
+      
+      if (textDiv.style.display === "none") {
+        textDiv.style.display = "block";
+        btn.innerText = "▲ Recolher Texto";
+        btn.style.background = "var(--accent-gold)";
+        btn.style.color = "#000";
+      } else {
+        textDiv.style.display = "none";
+        btn.innerText = "📖 Ler Texto Completo";
+        btn.style.background = "rgba(255,204,0,0.1)";
+        btn.style.color = "var(--accent-gold)";
+      }
+    }
   </script>
 </body>
 </html>
